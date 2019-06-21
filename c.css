@@ -1,0 +1,121 @@
+
+*{
+    font-family: Arial, Helvetica, sans-serif, 微軟正黑體;
+}
+body {
+    margin: 0;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: middle;
+    align-items: center;
+    background-image: url("./img/apocalypse.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+nav{
+    height: 40px;
+    width: 100vw;
+    position: fixed;
+    background-color: rgba(255,255,255,0.2);
+    display: flex;
+    vertical-align: middle;
+}
+
+#more{
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    border: none;
+    margin: 5px;
+    padding: 0;
+}
+
+#more div{
+    width: 20px;
+    border: 1px solid white;
+    margin: 4px;
+}
+
+.hwrap{
+    padding: 9px;
+    color: white;
+}
+
+#game{
+    height: 75vh;
+    width: 80vw;
+    margin: 0;
+    margin-top: 9vh;
+    cursor: url("./img/cursor.png") 50 50, auto;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0,0.5);
+    position: relative;
+}
+
+#game:active{
+    cursor: url("./img/cursor2.png") 50 50, auto;
+}
+
+.zb{
+    height: 150px;
+    position: absolute;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: middle;
+    align-items: center;
+}
+
+p{
+    display: inline;
+    color: white;
+    margin: 0 10px;
+    min-width: 100px;
+}
+
+.count{
+    color: red;
+}
+
+#start {
+    margin: 10px 0;
+    z-index: 1;
+    font-size: inherit;
+    font-family: inherit;
+    color: white;
+    padding: 0.5em 1em;
+    outline: none;
+    border: none;
+    background-color: hsl(236, 32%, 26%);
+}
+
+#start:hover {
+    cursor: pointer;
+    animation: jelly 0.5s;
+}
+
+#start:disabled{
+    cursor: not-allowed;
+    animation: none;
+    color: black;
+}
+
+@keyframes jelly {
+    0%,
+    100% {
+        transform: scale(1, 1);
+    }
+    25% {
+        transform: scale(0.9, 1.1);
+    }
+    50% {
+        transform: scale(1.1, 0.9);
+    }
+    75% {
+        transform: scale(0.95, 1.05);
+    }
+}

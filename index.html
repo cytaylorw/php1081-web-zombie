@@ -5,101 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>殭屍大亂逗</title>
+    <link rel="stylesheet" href="c.css">
     <script src="./jquery-3.4.1.min.js"></script>
-    <style>
-        *{
-            font-family: Arial, Helvetica, sans-serif, 微軟正黑體;
-        }
-        body{
-            margin: 0;
-            background-color: black;
-            display: flex;
-            flex-direction: column;
-            justify-content: middle;
-            align-items: center;
-            background-image: url("./img/apocalypse.jpg");
-            background-attachment: fixed;
-            background-size: cover;
-        }
-        #game{
-            height: 75vh;
-            width: 80vw;
-            margin: 0;
-            margin-top: 50px;
-            cursor: url("./img/cursor.png") 50 50, auto;
-            overflow: hidden;
-            background-color: rgba(0, 0, 0,0.5);
-            position: relative;
-        }
 
-        #game:active{
-            cursor: url("./img/cursor2.png") 50 50, auto;
-        }
-
-        .zb{
-            height: 150px;
-            position: absolute;
-        }
-
-        .info {
-            display: flex;
-            flex-direction: column;
-            justify-content: middle;
-            align-items: center;
-        }
-
-        p{
-            display: inline;
-            color: white;
-            margin: 0 10px;
-            min-width: 100px;
-        }
-
-        .count{
-            color: red;
-        }
-
-        #start {
-            margin: 10px 0;
-            z-index: 1;
-            font-size: inherit;
-            font-family: inherit;
-            color: white;
-            padding: 0.5em 1em;
-            outline: none;
-            border: none;
-            background-color: hsl(236, 32%, 26%);
-        }
-
-        #start:hover {
-            cursor: pointer;
-            animation: jelly 0.5s;
-        }
-
-        #start:disabled{
-            cursor: not-allowed;
-            animation: none;
-            color: black;
-        }
-
-        @keyframes jelly {
-            0%,
-            100% {
-                transform: scale(1, 1);
-            }
-            25% {
-                transform: scale(0.9, 1.1);
-            }
-            50% {
-                transform: scale(1.1, 0.9);
-            }
-            75% {
-                transform: scale(0.95, 1.05);
-            }
-        }
-    </style>
 </head>
 <body>
+    <nav>
+        <button id=more style="display:none"><div></div><div></div><div></div></button>
+        <div class="hwrap">最高分數：<span id="high"></span> 時間：<span id="date"></span></div>
+    </nav>
     <div id="game">
     </div>
     <div class="info">
@@ -118,6 +32,7 @@
             let timer;
             let score = 0;
             let gtime = 20;
+            let high = 0;
             $("#score").text(score);
             $("#timeleft").text(gtime);
             $("#start").on("click",function(){
@@ -183,6 +98,14 @@
                     clearInterval(gtimer);
                     clearInterval(timer);
                     $("#start").attr("disabled",false);
+                    if(score>high){
+                        high=score;
+                        let d = new Date();
+                        let now = `${d.getFullYear()}/${d.getMonth()}/${d.getDate()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
+                        $("#high").text(high);
+                        $("#date").text(now);
+
+                    }
                 }
             }
 
